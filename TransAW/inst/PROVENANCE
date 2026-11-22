@@ -1,0 +1,10 @@
+The numerical method is the production, full-simplex, two-fold estimator
+in the BLISS research scripts Trans-AW-highdim-sim.R and
+trans_aw_weight_penalty.R, as described in report_5.tex.
+The package uses the simulation report's fixed multiplier of 0.01 by default.
+Input handling, model summaries and predictions are package interfaces.
+Only observed target and source data enter the fit.
+The Biometrika simulation uses finite differences in centered log weights
+as recorded in the numerical appendix of report_5.tex. The kinase analysis
+uses the common-design source fit and analytic weight derivatives in the
+nine-screen application. Figures and tables use the archived study fits.

@@ -1,0 +1,8 @@
+.DS_Store
+.Rhistory
+.RData
+Rplots.pdf
+*.Rcheck/
+*.tar.gz
+output/
+analysis/reference/

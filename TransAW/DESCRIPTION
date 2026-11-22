@@ -1,0 +1,14 @@
+Package: TransAW
+Type: Package
+Title: Adaptive Source Weighting for High-Dimensional Transfer Learning
+Version: 0.2.0
+Authors@R: person("Jilei", "Lin", email = "jileilinstat@gmail.com", role = c("aut", "cre"))
+Description: Fits a sparse linear regression for a target population using
+    adaptive weights on one or more source samples. A two-fold procedure
+    learns source weights from target prediction error, corrects the source
+    coefficient estimate for weight estimation, and fits a sparse target
+    adjustment. Provides target predictions and fold-specific source weights.
+URL: https://github.com/jileil2/TransAW
+License: GPL-3
+Encoding: UTF-8
+Imports: glmnet, nloptr (>= 2.2.0), stats, graphics
