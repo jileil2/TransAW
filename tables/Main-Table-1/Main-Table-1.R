@@ -1,7 +1,7 @@
 # Table 1. Mean test error across scaffold splits.
-source("method/real-data-analysis/fit-kinases.R")
-source("method/real-data-analysis/kinase-summaries.R")
-source("method/visualization/kinase-tables.R")
+source("tables/Main-Table-1/fit-kinases.R")
+source("tables/Main-Table-1/kinase-summaries.R")
+source("tables/kinase-tables.R")
 
 errors <- kinase_errors(kinase_fits("predictions"))
 folder <- work_directory("Main-Table-1")

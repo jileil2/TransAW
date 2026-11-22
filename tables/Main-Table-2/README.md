@@ -9,4 +9,4 @@ Rscript tables/Main-Table-2/Main-Table-2-from-rds.R
 Rscript tables/Main-Table-2/Main-Table-2.R
 ```
 
-The CSV and LaTeX table and saved R data are included here. The scripts write new files to `../TransAW-analysis/Main-Table-2/` by default. For dependencies and instructions on sharing fits between items, see the [method guide](../../method/README.md).
+The CSV and LaTeX table and saved R data are included here. The scripts write new files to `../TransAW-analysis/Main-Table-2/` by default. See the [setup instructions](../../README.md#refit-the-models) before running a full analysis.

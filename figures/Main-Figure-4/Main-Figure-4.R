@@ -1,8 +1,8 @@
 # Figure 4. Test error on held-out compounds.
-source("method/real-data-analysis/fit-kinases.R")
-source("method/real-data-analysis/kinase-summaries.R")
-source("method/visualization/plot-device.R")
-source("method/visualization/kinase-figures.R")
+source("tables/Main-Table-1/fit-kinases.R")
+source("tables/Main-Table-1/kinase-summaries.R")
+source("figures/plot-device.R")
+source("figures/kinase-figures.R")
 
 errors <- kinase_errors(kinase_fits("predictions"))
 folder <- work_directory("Main-Figure-4")

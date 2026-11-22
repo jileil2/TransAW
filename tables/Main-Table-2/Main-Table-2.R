@@ -1,7 +1,7 @@
 # Table 2. Average contribution of each source kinase.
-source("method/real-data-analysis/fit-kinases.R")
-source("method/real-data-analysis/kinase-summaries.R")
-source("method/visualization/kinase-tables.R")
+source("tables/Main-Table-1/fit-kinases.R")
+source("tables/Main-Table-1/kinase-summaries.R")
+source("tables/kinase-tables.R")
 
 weights <- kinase_weights(kinase_fits("weights"))
 folder <- work_directory("Main-Table-2")

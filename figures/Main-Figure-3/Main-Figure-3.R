@@ -1,7 +1,7 @@
 # Figure 3. Effective sample size by source compatibility.
-source("method/simulation/fit-simulation.R")
-source("method/visualization/plot-device.R")
-source("method/visualization/simulation-figures.R")
+source("figures/Main-Figure-1/fit-simulation.R")
+source("figures/plot-device.R")
+source("figures/simulation-figures.R")
 
 weights <- simulation_fits(100, "weights")
 folder <- work_directory("Main-Figure-3")

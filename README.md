@@ -33,8 +33,20 @@ Rscript figures/Main-Figure-1/Main-Figure-1-from-rds.R
 Rscript tables/Main-Table-1/Main-Table-1-from-rds.R
 ```
 
-To refit the models, follow the [method guide](method/README.md) and run the corresponding script without the `-from-rds` suffix. Both routes write to a sibling directory named `TransAW-analysis`. Set `TRANSAW_WORKDIR` to choose another location.
+New files go to a sibling directory named `TransAW-analysis`. Set `TRANSAW_WORKDIR` to choose another location.
 
 The [data guide](data/README.md) documents the public ChEMBL measurements, compound fingerprints and 100 scaffold splits.
+
+## Refit the models
+
+```sh
+Rscript -e 'install.packages(c("glmnet", "nloptr", "ks", "ncvreg", "mvtnorm", "ggplot2", "tikzDevice"), repos = "https://cloud.r-project.org")'
+R CMD INSTALL TransAW
+Rscript setup-comparisons.R
+```
+
+The last command downloads the two comparison implementations at fixed revisions. To draw the figures, install a TeX distribution that includes `pdflatex`, TikZ, standalone, mathpazo and newpx.
+
+The full analysis scripts call the installed TransAW package and reuse completed fits in the same work directory. The [Figure 1 guide](figures/Main-Figure-1/README.md#simulations) gives the simulation settings and the [Table 1 guide](tables/Main-Table-1/README.md#kinase-analysis) describes the kinase fits.
 
 The R package and analysis scripts are distributed under [GPL-3](LICENSE). The prepared ChEMBL data retain their [data license and attribution](data/README.md).

@@ -9,4 +9,4 @@ Rscript figures/Main-Figure-2/Main-Figure-2-from-rds.R
 Rscript figures/Main-Figure-2/Main-Figure-2.R
 ```
 
-The PDF and its TikZ source and saved R data are included here. The scripts write new files to `../TransAW-analysis/Main-Figure-2/` by default. For dependencies and instructions on sharing fits between items, see the [method guide](../../method/README.md).
+The PDF and its TikZ source and saved R data are included here. The scripts write new files to `../TransAW-analysis/Main-Figure-2/` by default. See the [setup instructions](../../README.md#refit-the-models) before running a full analysis.

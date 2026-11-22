@@ -1,8 +1,7 @@
 library(TransAW)
-source("method/simulation/simulation-design.R")
-source("method/comparisons.R")
-source("method/simulation/simulation-trans-lasso.R")
-source("method/work-directory.R")
+source("figures/Main-Figure-1/simulation-design.R")
+source("comparisons.R")
+source("figures/Main-Figure-1/simulation-trans-lasso.R")
 
 fit_replication <- function(n, m, h, i, settings, directions, fold_weights = NULL) {
   dat <- generate_data(i, m, h, settings, directions)
@@ -49,7 +48,7 @@ simulation_fits <- function(n, component, sources = c(5, 10, 15, 20),
             all(replications %in% 1:200), !anyDuplicated(replications))
   settings <- list(seed = 20260716L, p = 500L, s0 = 16L, n0 = 150L, n_k = n)
   if (use_manuscript_weights) {
-    weights <- readRDS("method/simulation/manuscript-fold-weights.rds")
+    weights <- readRDS("figures/Main-Figure-1/manuscript-fold-weights.rds")
     folder <- work_directory("simulation-fits-at-manuscript-weights")
   } else {
     folder <- work_directory("simulation-fits")

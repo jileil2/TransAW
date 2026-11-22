@@ -1,7 +1,7 @@
 # Figure 1. Coefficient error with 100 observations per source.
-source("method/work-directory.R")
-source("method/visualization/plot-device.R")
-source("method/visualization/simulation-figures.R")
+source("work-directory.R")
+source("figures/plot-device.R")
+source("figures/simulation-figures.R")
 
 errors <- readRDS("figures/Main-Figure-1/Main-Figure-1.rds")
 folder <- work_directory("Main-Figure-1")

@@ -9,4 +9,23 @@ Rscript tables/Main-Table-1/Main-Table-1-from-rds.R
 Rscript tables/Main-Table-1/Main-Table-1.R
 ```
 
-The CSV and LaTeX table and saved R data are included here. The scripts write new files to `../TransAW-analysis/Main-Table-1/` by default. For dependencies and instructions on sharing fits between items, see the [method guide](../../method/README.md).
+The CSV and LaTeX table and saved R data are included here. The scripts write new files to `../TransAW-analysis/Main-Table-1/` by default. See the [setup instructions](../../README.md#refit-the-models) before running a full analysis.
+
+## Kinase analysis
+
+The nine source screens measured the same compounds. Trans-AW fits them with a common design matrix and uses analytic derivatives in the source weights. The target training set determines predictor scaling, the intercept and response scaling. Each historical screen is centered separately. Prediction errors are measured in percentage points of inhibition. The equal-weight comparison uses the same source penalty, folds and residual adjustment as the adaptive fit.
+
+Figures 4–5 and Tables 1–2 share the same 100 scaffold splits. For example, run Table 1 from the measurements with the following command.
+
+```sh
+Rscript tables/Main-Table-1/Main-Table-1.R
+```
+
+To examine a single split in R, run the following commands.
+
+```r
+source("tables/Main-Table-1/fit-kinases.R")
+predictions <- kinase_fits("predictions", splits = 1)
+```
+
+Trans-LASSO uses two held-out thirds and eight-fold tuning of candidate models. RIW-TL returned predictions on 88 splits in the manuscript analysis. Each summary uses the completed splits for that method.

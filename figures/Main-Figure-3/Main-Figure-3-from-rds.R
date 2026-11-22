@@ -1,7 +1,7 @@
 # Figure 3. Effective sample size by source compatibility.
-source("method/work-directory.R")
-source("method/visualization/plot-device.R")
-source("method/visualization/simulation-figures.R")
+source("work-directory.R")
+source("figures/plot-device.R")
+source("figures/simulation-figures.R")
 
 weights <- readRDS("figures/Main-Figure-3/Main-Figure-3.rds")
 folder <- work_directory("Main-Figure-3")

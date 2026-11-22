@@ -1,8 +1,7 @@
 library(TransAW)
-source("method/real-data-analysis/kinase-design.R")
-source("method/comparisons.R")
-source("method/real-data-analysis/kinase-trans-lasso.R")
-source("method/work-directory.R")
+source("tables/Main-Table-1/kinase-design.R")
+source("comparisons.R")
+source("tables/Main-Table-1/kinase-trans-lasso.R")
 
 fit_split <- function(i, panel, partitions) {
   d <- prepare_split(panel, partitions[partitions$split == i, ])

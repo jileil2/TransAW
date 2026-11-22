@@ -1,8 +1,8 @@
 # Figure 5. Contributions from the nine source kinases.
-source("method/real-data-analysis/fit-kinases.R")
-source("method/real-data-analysis/kinase-summaries.R")
-source("method/visualization/plot-device.R")
-source("method/visualization/kinase-figures.R")
+source("tables/Main-Table-1/fit-kinases.R")
+source("tables/Main-Table-1/kinase-summaries.R")
+source("figures/plot-device.R")
+source("figures/kinase-figures.R")
 
 weights <- kinase_weights(kinase_fits("weights"))
 folder <- work_directory("Main-Figure-5")
