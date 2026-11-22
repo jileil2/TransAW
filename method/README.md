@@ -31,6 +31,13 @@ simulation_fits(100, "errors", sources = 5, heterogeneity = 2, replications = 1)
 
 Trans-AW computes the simulation correction by finite differences in centered log-weight coordinates. The selected predictors can change during the source-weight search, so a fresh search on another numerical platform can give different estimates.
 
+To check a regression at the two source-weight vectors selected in the original simulation, set `use_manuscript_weights = TRUE`. This reads `simulation/manuscript-fold-weights.rds`, refits the regressions and target adjustments, and stores the fits in a separate directory.
+
+```r
+simulation_fits(100, "errors", sources = 5, heterogeneity = 2, replications = 1,
+                use_manuscript_weights = TRUE)
+```
+
 In the Trans-LASSO simulation comparison, the target-only candidate uses cross-validation. The pooled candidates and their target adjustments use a zero penalty. RIW-TL uses the authors’ cross-validated thresholds. [Trans-LASSO code](https://github.com/saili0103/TransLasso) · [RIW-TL code](https://github.com/RIW-TL/Transfer-learning)
 
 ## Kinase analysis
