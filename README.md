@@ -12,23 +12,29 @@ library(TransAW)
 
 The package accepts numeric design matrices or a formula and a list of source data frames. It returns target coefficients, predictions and source weights for each fold. For a worked example, see the [package guide](TransAW/README.md).
 
-## Reproduce the manuscript
+## Figures and tables
 
-From the repository root, run the following command to rebuild all five figures and both tables from the saved fits. This takes about a minute and requires R, the **ggplot2** and **tikzDevice** packages, and a TeX installation with `pdflatex`, TikZ, standalone, mathpazo and newpx.
+Each manuscript item has its own folder with the analysis script, the numerical values used in the paper, and a short script that draws the figure or writes the table from those values.
+
+| Manuscript item | Analysis |
+| --- | --- |
+| [Figure 1](figures/Main-Figure-1/) | Squared coefficient error with 100 observations per source |
+| [Figure 2](figures/Main-Figure-2/) | Squared coefficient error with 300 observations per source |
+| [Figure 3](figures/Main-Figure-3/) | Effective sample size by source compatibility |
+| [Figure 4](figures/Main-Figure-4/) | Test error on held-out compounds |
+| [Figure 5](figures/Main-Figure-5/) | Contributions from the nine source kinases |
+| [Table 1](tables/Main-Table-1/) | Mean test error and Monte Carlo standard error across scaffold splits |
+| [Table 2](tables/Main-Table-2/) | Average contribution of each source kinase |
+
+For example, run these commands from the repository root to draw Figure 1 and write Table 1 from the supplied R data. The figure scripts use **tikzDevice** and a TeX installation with `pdflatex`, TikZ, standalone, mathpazo and newpx. The simulation figures also use **ggplot2**. The table scripts use base R.
 
 ```sh
-Rscript reproduce.R
+Rscript figures/Main-Figure-1/Main-Figure-1-from-rds.R
+Rscript tables/Main-Table-1/Main-Table-1-from-rds.R
 ```
 
-The PDFs, CSV tables and LaTeX table rows appear in `output/manuscript/`. The simulation files contain results for individual replications. The kinase files contain held-out compound predictions, fold weights and candidate selections. The scripts compute the summaries and plots from these records.
+To refit the models, follow the [method guide](method/README.md) and run the corresponding script without the `-from-rds` suffix. Both routes write to a sibling directory named `TransAW-analysis`. Set `TRANSAW_WORKDIR` to choose another location.
 
-| Manuscript item | What it shows | Script |
-| --- | --- | --- |
-| Figures 1–2 | Squared coefficient error for 100 or 300 observations per source | [Simulation figures](figures/simulation-figures.R) |
-| Figure 3 | Effective sample size by source compatibility | [Simulation figures](figures/simulation-figures.R) |
-| Figure 4 and Table 1 | Test mean absolute error across scaffold splits | [Kinase figures](figures/kinase-figures.R) · [Kinase tables](tables/kinase-tables.R) |
-| Figure 5 and Table 2 | Contributions from the nine source kinases | [Kinase figures](figures/kinase-figures.R) · [Kinase tables](tables/kinase-tables.R) |
-
-To fit the models from the beginning, see the [analysis instructions](analysis/README.md). The [data guide](data/README.md) describes the public ChEMBL measurements, gives the dataset citation and explains how to rebuild the compound fingerprints.
+The [data guide](data/README.md) documents the public ChEMBL measurements, compound fingerprints and 100 scaffold splits.
 
 The R package and analysis scripts are distributed under [GPL-3](LICENSE). The prepared ChEMBL data retain their [data license and attribution](data/README.md).

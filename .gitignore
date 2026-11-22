@@ -4,5 +4,6 @@
 Rplots.pdf
 *.Rcheck/
 *.tar.gz
-output/
-analysis/reference/
+/output/
+/results/
+method/reference/
