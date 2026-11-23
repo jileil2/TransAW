@@ -35,6 +35,8 @@ Each figure and table has a separate directory containing its analysis code, sav
 | [Figure 5](figures/Main-Figure-5/) | Estimated weights for the nine source kinases |
 | [Table 1](tables/Main-Table-1/) | Mean test prediction error and Monte Carlo standard error across scaffold splits |
 | [Table 2](tables/Main-Table-2/) | Average source weights for the nine kinases |
+| [Supplementary Figure S1](figures/Supplement-Figure-S1/) | Source-weight penalty sensitivity with 100 observations per source |
+| [Supplementary Figure S2](figures/Supplement-Figure-S2/) | Source-weight penalty sensitivity with 300 observations per source |
 
 For example, from the repository root, regenerate Figure 1 and Table 1 using the supplied R data:
 
