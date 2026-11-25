@@ -1,10 +1,15 @@
-# Figure 2. Coefficient error with 300 observations per source.
+# Figure 2. Refit the two source-sample-size settings and draw the combined figure.
+library(ggplot2)
+library(grid)
 source("figures/Main-Figure-1/fit-simulation.R")
 source("figures/plot-device.R")
 source("figures/simulation-figures.R")
+source("figures/Main-Figure-2/plot-composite.R")
 
 errors <- simulation_fits(300, "errors")
+weights <- simulation_fits(100, "weights")
 folder <- file.path(Sys.getenv("TRANSAW_WORKDIR", "results"), "Main-Figure-2")
 dir.create(folder, recursive = TRUE, showWarnings = FALSE)
-saveRDS(errors, file.path(folder, "Main-Figure-2.rds"))
-plot_simulation_errors(errors, file.path(folder, "Main-Figure-2.tex"))
+saveRDS(errors, file.path(folder, "coefficient-error-300.rds"))
+saveRDS(weights, file.path(folder, "source-information-100.rds"))
+plot_simulation_composite(errors, weights, file.path(folder, "Main-Figure-2.tex"))

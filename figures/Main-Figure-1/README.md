@@ -13,7 +13,7 @@ The PDF and its TikZ source and saved R data are included here. The scripts writ
 
 ## Simulations
 
-The simulations use 150 target observations, 500 predictors, and 100 or 300 observations per source. Each combination of source count and heterogeneity has 200 replications. The base seed is 20260716. Figures 1 and 3 use the same 2,400 datasets. Figure 2 uses the other 2,400.
+The simulations use 150 target observations, 500 predictors, and 100 or 300 observations per source. Each combination of source count and heterogeneity has 200 replications. The base seed is 20260716. Figure 1 and Figure 2(b) use the same 2,400 datasets with 100 observations per source. Figure 2(a) uses the other 2,400 datasets, with 300 observations per source.
 
 For example, this command simulates the data, fits the four methods and draws Figure 1.
 

@@ -29,32 +29,32 @@ Each figure and table has a separate directory containing its analysis code, sav
 | Manuscript item | Contents |
 | --- | --- |
 | [Figure 1](figures/Main-Figure-1/) | Squared coefficient error with 100 observations per source |
-| [Figure 2](figures/Main-Figure-2/) | Squared coefficient error with 300 observations per source |
-| [Figure 3](figures/Main-Figure-3/) | Effective source sample size under different levels of source compatibility |
-| [Figure 4](figures/Main-Figure-4/) | Test RMSE for held-out compounds |
-| [Figure 5](figures/Main-Figure-5/) | Observed inhibition heatmap for the target and nine source kinases |
-| [Figure 6](figures/Main-Figure-6/) | Three representative molecular environments |
+| [Figure 2](figures/Main-Figure-2/) | (a) Squared coefficient error with 300 observations per source; (b) category effective sample size with 100 observations per source |
+| [Figure 3](figures/Main-Figure-3/) | Test RMSE for held-out compounds |
+| [Figure 4](figures/Main-Figure-4/) | Observed inhibition heatmap for the target and nine source kinases |
+| [Figure 5](figures/Main-Figure-5/) | Three representative molecular environments |
 | [Table 1](tables/Main-Table-1/) | Mean test RMSE and Monte Carlo standard error across scaffold splits |
 | [Table 2](tables/Main-Table-2/) | Full-sample source contributions |
 | [Table 3](tables/Main-Table-3/) | Full-sample coefficients and molecular-environment coverage |
 | [Supplementary Figure S1](figures/Supplement-Figure-S1/) | Source-weight penalty sensitivity with 100 observations per source |
 | [Supplementary Figure S2](figures/Supplement-Figure-S2/) | Source-weight penalty sensitivity with 300 observations per source |
 
-For example, from the repository root, regenerate Figure 1 and Table 1 using the supplied R data:
+For example, from the repository root, regenerate the simulation figures and Table 1 using the supplied R data:
 
 ```sh
 Rscript figures/Main-Figure-1/Main-Figure-1-from-rds.R
+Rscript figures/Main-Figure-2/Main-Figure-2-from-rds.R
 Rscript tables/Main-Table-1/Main-Table-1-from-rds.R
 ```
 
 The R figure scripts use `tikzDevice` and a TeX installation with `pdflatex`, TikZ, `standalone`, `mathpazo`, and `newpx`; simulation figures also use `ggplot2`. Table scripts use base R. Outputs are written under `results/`, with one directory per manuscript item. Set `TRANSAW_WORKDIR` to choose another location.
 
-Figure 5 is drawn directly from the inhibition measurements. Figure 6 uses the stored compound structures and mapped fingerprint environments:
+Figure 4 is drawn directly from the inhibition measurements. Figure 5 uses the stored compound structures and mapped fingerprint environments:
 
 ```sh
-Rscript figures/Main-Figure-5/Main-Figure-5.R
-python3 -m pip install -r figures/Main-Figure-6/requirements.txt
-python3 figures/Main-Figure-6/Main-Figure-6.py
+Rscript figures/Main-Figure-4/Main-Figure-4.R
+python3 -m pip install -r figures/Main-Figure-5/requirements.txt
+python3 figures/Main-Figure-5/Main-Figure-5.py
 Rscript tables/Main-Table-2/Main-Table-2-from-rds.R
 Rscript tables/Main-Table-3/Main-Table-3-from-rds.R
 ```

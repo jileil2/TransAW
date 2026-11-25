@@ -1,11 +1,12 @@
-# Figure 5. Observed kinase inhibition
+# Figure 5. Representative molecular environments
 
-The heatmap contains 364 compounds and ten kinase assays. Compounds are ordered by complete-linkage hierarchical clustering using Euclidean distances between their ten-assay inhibition profiles. Kinase rows remain in a fixed order and share one color scale.
+The panels show the substituted imidazole environment in SB-221466 (bit 204), the pyridine-ring segment in SB-751148 (bit 19), and an aromatic-carbon environment in CHEMBL69757 (bit 64).
 
 Run from the repository root:
 
 ```sh
-Rscript figures/Main-Figure-5/Main-Figure-5.R
+python3 -m pip install -r figures/Main-Figure-5/requirements.txt
+python3 figures/Main-Figure-5/Main-Figure-5.py
 ```
 
-The script reads `data/kinase-panel.csv.gz` and writes the PDF, TikZ source, and ordered measurements to `results/Main-Figure-5/`.
+The script rebuilds the 256-bit radius-two Morgan fingerprints from the compound SMILES, calculates environment coverage, and draws the stored atom and bond highlights. It writes vector drawings and the assembled figure to `results/Main-Figure-5/`. A TeX installation with `pdflatex`, `pdfcrop`, `standalone`, and `newtxtext` is required.

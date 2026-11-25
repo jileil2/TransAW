@@ -1,6 +1,6 @@
-# Figure 3. Effective sample size by source compatibility
+# Figure 3. Test error on held-out compounds
 
-This figure uses the fits from Figure 1. Within each replication, the script normalizes the fitted source contributions and computes effective sample size in each compatibility group.
+Each row contains root mean squared error on the 109 held-out compounds in one scaffold split. The plot compares four methods across 100 splits. RIW-TL returned predictions on 88 of them.
 
 Run either command from the repository root. The first reads the manuscript data in `Main-Figure-3.rds`. The second fits the models with the TransAW package.
 
