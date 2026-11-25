@@ -28,8 +28,8 @@ Each figure and table has a separate directory containing its analysis code, sav
 
 | Manuscript item | Contents |
 | --- | --- |
-| [Figure 1](figures/Main-Figure-1/) | Squared coefficient error with 100 observations per source |
-| [Figure 2](figures/Main-Figure-2/) | (a) Squared coefficient error with 300 observations per source; (b) category effective sample size with 100 observations per source |
+| [Figure 1](figures/Main-Figure-1/) | Squared coefficient error with 100 and 300 observations per source |
+| [Figure 2](figures/Main-Figure-2/) | Category effective sample size with 100 observations per source |
 | [Figure 3](figures/Main-Figure-3/) | Test RMSE for held-out compounds |
 | [Figure 4](figures/Main-Figure-4/) | Observed inhibition heatmap for the target and nine source kinases |
 | [Figure 5](figures/Main-Figure-5/) | Three representative molecular environments |

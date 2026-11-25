@@ -1,4 +1,4 @@
-# Figure 2(b). Effective sample size by source compatibility.
+# Figure 2. Effective sample size by source compatibility.
 source("figures/Main-Figure-1/fit-simulation.R")
 source("figures/plot-device.R")
 source("figures/simulation-figures.R")

@@ -1,6 +1,6 @@
-# Figure 1. Coefficient error with 100 observations per source
+# Figure 1. Coefficient error with 100 and 300 observations per source
 
-The plot compares four methods across four source counts and three heterogeneity levels. Each point is the mean squared coefficient error over 200 replications. The bars give Monte Carlo intervals.
+The plot compares four methods across four source counts and three heterogeneity levels. Rows correspond to 100 and 300 observations per source, with a common vertical scale and legend. Each point is the mean squared coefficient error over 200 replications. The bars give Monte Carlo intervals.
 
 Run either command from the repository root. The first reads the manuscript data in `Main-Figure-1.rds`. The second fits the models with the TransAW package.
 
@@ -11,9 +11,11 @@ Rscript figures/Main-Figure-1/Main-Figure-1.R
 
 The PDF and its TikZ source and saved R data are included here. The scripts write new files to `results/Main-Figure-1/` by default. See the [setup instructions](../../README.md#rerunning-the-analyses) before running a full analysis.
 
+The [panels directory](panels/) retains the original individual figures, saved records, and scripts for each source sample size.
+
 ## Simulations
 
-The simulations use 150 target observations, 500 predictors, and 100 or 300 observations per source. Each combination of source count and heterogeneity has 200 replications. The base seed is 20260716. Figure 1 and Figure 2(b) use the same 2,400 datasets with 100 observations per source. Figure 2(a) uses the other 2,400 datasets, with 300 observations per source.
+The simulations use 150 target observations, 500 predictors, and 100 or 300 observations per source. Each combination of source count and heterogeneity has 200 replications. The base seed is 20260716. Figure 1 uses all 4,800 datasets. Figure 2 uses the 2,400 datasets with 100 observations per source.
 
 For example, this command simulates the data, fits the four methods and draws Figure 1.
 

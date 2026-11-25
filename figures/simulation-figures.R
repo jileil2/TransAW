@@ -60,6 +60,21 @@ plot_simulation_errors <- function(errors, path) {
                        path, 4.1)
 }
 
+# Compare source sample sizes on a shared vertical scale.
+plot_source_sample_sizes <- function(errors, path) {
+  rows <- aggregate(coef_error ~ n + m + h + method, errors, mean_interval)
+  summary <- cbind(rows[1:4], as.data.frame(rows$coef_error))
+  write.csv(summary, file.path(dirname(path), "coefficient-error.csv"), row.names = FALSE)
+  summary$n <- factor(summary$n, levels = c(100, 300),
+                      labels = c("$n_k = 100$", "$n_k = 300$"))
+  plot <- simulation_plot(summary) +
+    ggplot2::facet_grid(n ~ h) +
+    ggplot2::labs(x = "Number of sources, $m$") +
+    ggplot2::theme(strip.text.y = ggplot2::element_text(size = 10),
+                   panel.spacing.y = grid::unit(.8, "lines"))
+  save_simulation_plot(plot, path, height = 4.8)
+}
+
 plot_source_sizes <- function(weights, path) {
   sizes <- effective_sample_size(weights)
   rows <- aggregate(share ~ m + h + method + group, sizes, mean_interval)
