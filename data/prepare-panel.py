@@ -46,3 +46,8 @@ with gzip.open(output, "wt", newline="") as stream:
         scaffold = hashlib.sha256(generic.encode()).hexdigest()[:16]
         bits = generator.GetFingerprint(mol).ToBitString()
         writer.writerow([compound, scaffold, *[mean(readings[k]) for k in kinases], *bits])
+
+with output.with_name("compound-structures.csv").open("w", newline="") as stream:
+    writer = csv.writer(stream, lineterminator="\n")
+    writer.writerow(["compound", "smiles"])
+    writer.writerows(sorted(structures.items()))

@@ -1,0 +1,4 @@
+bit,category,compound,compound_name,smiles,center,radius,highlighted_atoms,highlighted_bonds,fragment_smiles,fragment_compounds,bit_compounds,environment_coverage
+bit204,Shared,CHEMBL95502,SB-221466,CC1(C)CC(CC(C)(C)N1)n2cnc(c3ccc(F)cc3)c2c4ccnc(N)n4,13,2,"[10, 11, 12, 13, 14, 15, 20, 21, 22]","[12, 13, 20, 11, 14, 30, 21, 29]",c(-c(c)c)(nc)c(-c)n,26,34,0.7647058823529411
+bit19,Trans-AW only,CHEMBL365072,SB-751148,CCc1nccc2c1nc(c3nonc3N)n2CC,4,2,"[2, 3, 4, 5, 6]","[3, 4, 2, 5]",c(cc)nc,84,118,0.711864406779661
+bit64,LASSO only,CHEMBL69757,,COc1cccc(c1)n2ncc3c(N\N=C\c4cccc(F)c4)ncnc23,18,1,"[17, 18, 19]","[17, 18]",c(c)c,229,235,0.9744680851063829

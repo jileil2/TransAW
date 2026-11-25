@@ -20,7 +20,8 @@ fit_sensitivity <- function(n, sources = c(5, 10, 15, 20),
             all(replications %in% 1:200), !anyDuplicated(replications))
   settings <- list(seed = 20260716L, p = 500L, s0 = 16L, n0 = 150L, n_k = n)
   multipliers <- c(0.01, 0, 0.0025, 0.005, 0.02, 0.05, 0.1)
-  folder <- work_directory("penalty-sensitivity")
+  folder <- file.path(Sys.getenv("TRANSAW_WORKDIR", "results"), "penalty-sensitivity")
+  dir.create(folder, recursive = TRUE, showWarnings = FALSE)
   records <- list()
   for (m in sources) {
     directions <- fixed_sparse_directions(m, settings$p, 6L, settings$seed)
@@ -65,7 +66,9 @@ fit_sensitivity <- function(n, sources = c(5, 10, 15, 20),
               status_A = fit$diagnostics$optimizer_status[1],
               status_B = fit$diagnostics$optimizer_status[2]))
             record$fits <- rbind(record$fits, row)
-            save_fit(record, path)
+            temporary <- tempfile(tmpdir = folder)
+            saveRDS(record, temporary)
+            if (!file.rename(temporary, path)) stop("Could not save ", path)
           }
           message(sprintf("Completed n_k=%d, m=%d, h=%d, replication %d", n, m, h, i))
         }

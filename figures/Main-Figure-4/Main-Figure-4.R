@@ -5,6 +5,7 @@ source("figures/plot-device.R")
 source("figures/kinase-figures.R")
 
 errors <- kinase_errors(kinase_fits("predictions"))
-folder <- work_directory("Main-Figure-4")
+folder <- file.path(Sys.getenv("TRANSAW_WORKDIR", "results"), "Main-Figure-4")
+dir.create(folder, recursive = TRUE, showWarnings = FALSE)
 saveRDS(errors, file.path(folder, "Main-Figure-4.rds"))
 plot_kinase_errors(errors, file.path(folder, "Main-Figure-4.tex"))

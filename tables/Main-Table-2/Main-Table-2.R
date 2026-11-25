@@ -1,9 +1,7 @@
-# Table 2. Average contribution of each source kinase.
-source("tables/Main-Table-1/fit-kinases.R")
-source("tables/Main-Table-1/kinase-summaries.R")
-source("tables/kinase-tables.R")
-
-weights <- kinase_weights(kinase_fits("weights"))
-folder <- work_directory("Main-Table-2")
-saveRDS(weights, file.path(folder, "Main-Table-2.rds"))
-write_weight_table(weights, file.path(folder, "Main-Table-2"))
+# Table 2. Full-sample kinase analysis.
+source("tables/Main-Table-2/source-contributions.R")
+source("tables/Main-Table-2/fit-full-sample.R")
+weights <- fit_full_sample()$source_weights
+folder <- file.path(Sys.getenv("TRANSAW_WORKDIR", "results"), "Main-Table-2")
+dir.create(folder, recursive = TRUE, showWarnings = FALSE)
+write_source_table(weights, file.path(folder, "Main-Table-2"))

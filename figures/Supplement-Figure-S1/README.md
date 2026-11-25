@@ -18,6 +18,6 @@ To refit the models using the installed TransAW package, run the analysis script
 Rscript figures/Supplement-Figure-S1/Supplement-Figure-S1.R
 ```
 
-Fresh optimizer searches can produce different estimates on another numerical platform. Completed fits are saved under `../TransAW-analysis/penalty-sensitivity/`. The figure and a table of means, Monte Carlo standard errors and intervals are written to `../TransAW-analysis/Supplement-Figure-S1/`. Set `TRANSAW_WORKDIR` to choose another location.
+Completed fits are saved under `results/penalty-sensitivity/`. The figure and a table of means, Monte Carlo standard errors and intervals are written to `results/Supplement-Figure-S1/`. Set `TRANSAW_WORKDIR` to choose another location.
 
 The figures use ggplot2, tikzDevice, pdflatex, TikZ, standalone, amsmath and mathpazo. Refitting requires the TransAW package and its dependencies. The common plotting and fitting functions are in [Figure S1](../Supplement-Figure-S1/).

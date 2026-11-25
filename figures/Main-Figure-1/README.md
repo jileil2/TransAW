@@ -9,7 +9,7 @@ Rscript figures/Main-Figure-1/Main-Figure-1-from-rds.R
 Rscript figures/Main-Figure-1/Main-Figure-1.R
 ```
 
-The PDF and its TikZ source and saved R data are included here. The scripts write new files to `../TransAW-analysis/Main-Figure-1/` by default. See the [setup instructions](../../README.md#refit-the-models) before running a full analysis.
+The PDF and its TikZ source and saved R data are included here. The scripts write new files to `results/Main-Figure-1/` by default. See the [setup instructions](../../README.md#rerunning-the-analyses) before running a full analysis.
 
 ## Simulations
 
@@ -28,7 +28,7 @@ source("figures/Main-Figure-1/fit-simulation.R")
 simulation_fits(100, "errors", sources = 5, heterogeneity = 2, replications = 1)
 ```
 
-Trans-AW computes the simulation correction by finite differences in centered log-weight coordinates. The selected predictors can change during the source-weight search, so a fresh search on another numerical platform can give different estimates.
+Trans-AW computes the simulation correction by finite differences in centered log-weight coordinates.
 
 To check a regression at the two source-weight vectors selected in the original simulation, set `use_manuscript_weights = TRUE`. This reads `figures/Main-Figure-1/manuscript-fold-weights.rds`, refits the regressions and target adjustments, and stores the fits in a separate directory.
 

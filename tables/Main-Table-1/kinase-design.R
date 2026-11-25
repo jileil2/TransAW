@@ -6,6 +6,10 @@ prepare_split <- function(panel, partition) {
   test <- match(partition$compound[partition$role == "test"], panel$compound)
   stopifnot(length(train) == 255L, length(test) == 109L, !anyNA(c(train, test)),
             !anyDuplicated(c(train, test)), !any(panel$scaffold[train] %in% panel$scaffold[test]))
+  prepare_kinases(panel, train, test)
+}
+
+prepare_kinases <- function(panel, train = seq_len(nrow(panel)), test = integer()) {
   bits <- as.matrix(panel[, paste0("bit", 0:255)])
   scale_x <- apply(bits[train, , drop = FALSE], 2, sd, na.rm = TRUE)
   keep <- scale_x > 0
@@ -23,5 +27,6 @@ prepare_split <- function(panel, partition) {
   names(sources) <- kinases
   list(target = target, sources = sources, newx = target_x[test, , drop = FALSE],
        mean = target_mean, sd = target_sd, compounds = panel$compound[test],
-       observed = panel$P38alpha[test])
+       observed = panel$P38alpha[test], predictor_scale = scale_x[keep],
+       retained_predictors = names(scale_x)[keep])
 }

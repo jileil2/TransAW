@@ -1,3 +1,18 @@
+# Li, Cai and Li reference implementation, downloaded only when a refit is requested.
+tl_reference <- NULL
+load_tl_reference <- function() {
+  folder <- file.path(Sys.getenv("TRANSAW_WORKDIR", "results"), "reference")
+  dir.create(folder, recursive = TRUE, showWarnings = FALSE)
+  path <- file.path(folder, "trans-lasso.R")
+  if (!file.exists(path)) {
+    download.file("https://raw.githubusercontent.com/saili0103/TransLasso/285009edf3e638567474108f823adcc1dc6c7c4a/TransLasso-functions.R",
+                  path, mode = "wb")
+  }
+  env <- new.env(parent = globalenv())
+  sys.source(path, envir = env)
+  env
+}
+
 trans_lasso_candidate_sets <- function(rank_pi) {
   kk_list <- unique(rank_pi)
   tset <- lapply(seq_along(kk_list), function(kk) which(rank_pi <= kk_list[kk]))
@@ -30,6 +45,7 @@ trans_lasso_mass_from_reference <- function(fit, m) {
 }
 
 fit_trans_lasso_reference_one <- function(dat, I_til) {
+  if (is.null(tl_reference)) tl_reference <<- load_tl_reference()
   # The simulation used unpenalized pooled candidates. The target-only
   # candidate still selects its penalty by eight-fold cross-validation.
   ref <- new.env(parent = tl_reference)

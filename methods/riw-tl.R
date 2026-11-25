@@ -1,31 +1,20 @@
-source("work-directory.R")
-
-# The authors' scripts define some functions with the same names.
-# Load each in its own environment.
-load_reference <- function(file) {
-  path <- file.path(work_directory("reference"), file)
-  if (!file.exists(path)) stop("First run Rscript setup-comparisons.R")
+# Zhao et al. reference implementation, downloaded only when a refit is requested.
+riw_reference <- NULL
+load_riw_reference <- function() {
+  folder <- file.path(Sys.getenv("TRANSAW_WORKDIR", "results"), "reference")
+  dir.create(folder, recursive = TRUE, showWarnings = FALSE)
+  path <- file.path(folder, "riw.R")
+  if (!file.exists(path)) {
+    download.file("https://raw.githubusercontent.com/RIW-TL/Transfer-learning/cee9d7b4a5ca32abfbe466e2902806a232f86ba0/functions.R",
+                  path, mode = "wb")
+  }
   env <- new.env(parent = globalenv())
   sys.source(path, envir = env)
   env
 }
-riw_reference <- load_reference("riw.R")
-tl_reference <- load_reference("trans-lasso.R")
-
-benchmark_input <- function(target, sources) {
-  list(X0 = target$x, y0 = target$y, X_sources = unname(lapply(sources, "[[", "x")),
-       y_sources = unname(lapply(sources, "[[", "y")))
-}
-
-lasso_cv <- function(x, y, seed) {
-  set.seed(seed)
-  nfolds <- min(5L, max(3L, floor(nrow(x) / 10)))
-  fold <- sample(rep(seq_len(nfolds), length.out = nrow(x)))
-  fit <- glmnet::cv.glmnet(x, y, foldid = fold, standardize = FALSE, intercept = FALSE)
-  as.numeric(coef(fit, s = "lambda.min"))[-1L]
-}
 
 riw_fit <- function(dat, seed) {
+  if (is.null(riw_reference)) riw_reference <<- load_riw_reference()
   x <- do.call(rbind, c(list(dat$X0), dat$X_sources))
   y <- c(dat$y0, unlist(dat$y_sources, use.names = FALSE))
   sizes <- c(nrow(dat$X0), vapply(dat$X_sources, nrow, integer(1)))
@@ -77,8 +66,8 @@ reference_source_splits <- function(X_sources, y_sources) {
 }
 
 riw_rotation <- function(X01, Y01, X02, Y02,
-                                            X11, Y11, X12, Y12, X13, Y13,
-                                            A, M) {
+                         X11, Y11, X12, Y12, X13, Y13,
+                         A, M) {
   p <- ncol(X01)
   m <- length(X11)
 

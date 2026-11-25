@@ -1,6 +1,7 @@
 library(TransAW)
 source("tables/Main-Table-1/kinase-design.R")
-source("comparisons.R")
+source("methods/target-lasso.R")
+source("methods/riw-tl.R")
 source("tables/Main-Table-1/kinase-trans-lasso.R")
 
 fit_split <- function(i, panel, partitions) {
@@ -53,14 +54,17 @@ kinase_fits <- function(component, splits = 1:100) {
   stopifnot(length(splits) > 0L, all(splits %in% 1:100), !anyDuplicated(splits))
   panel <- read.csv("data/kinase-panel.csv.gz", check.names = FALSE)
   partitions <- read.csv("data/scaffold-splits.csv.gz")
-  folder <- work_directory("kinase-fits")
+  folder <- file.path(Sys.getenv("TRANSAW_WORKDIR", "results"), "kinase-fits")
+  dir.create(folder, recursive = TRUE, showWarnings = FALSE)
   records <- lapply(splits, function(i) {
     path <- file.path(folder, sprintf("split-%03d.rds", i))
     if (file.exists(path)) {
       fit <- readRDS(path)
     } else {
       fit <- fit_split(i, panel, partitions)
-      save_fit(fit, path)
+      temporary <- tempfile(tmpdir = folder)
+      saveRDS(fit, temporary)
+      if (!file.rename(temporary, path)) stop("Could not save ", path)
     }
     fit[[component]]
   })

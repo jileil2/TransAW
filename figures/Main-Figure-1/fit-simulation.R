@@ -1,6 +1,7 @@
 library(TransAW)
 source("figures/Main-Figure-1/simulation-design.R")
-source("comparisons.R")
+source("methods/target-lasso.R")
+source("methods/riw-tl.R")
 source("figures/Main-Figure-1/simulation-trans-lasso.R")
 
 fit_replication <- function(n, m, h, i, settings, directions, fold_weights = NULL) {
@@ -49,9 +50,11 @@ simulation_fits <- function(n, component, sources = c(5, 10, 15, 20),
   settings <- list(seed = 20260716L, p = 500L, s0 = 16L, n0 = 150L, n_k = n)
   if (use_manuscript_weights) {
     weights <- readRDS("figures/Main-Figure-1/manuscript-fold-weights.rds")
-    folder <- work_directory("simulation-fits-at-manuscript-weights")
+    folder <- file.path(Sys.getenv("TRANSAW_WORKDIR", "results"), "simulation-fits-at-manuscript-weights")
+    dir.create(folder, recursive = TRUE, showWarnings = FALSE)
   } else {
-    folder <- work_directory("simulation-fits")
+    folder <- file.path(Sys.getenv("TRANSAW_WORKDIR", "results"), "simulation-fits")
+    dir.create(folder, recursive = TRUE, showWarnings = FALSE)
   }
   records <- list()
   for (m in sources) {
@@ -67,7 +70,9 @@ simulation_fits <- function(n, component, sources = c(5, 10, 15, 20),
         } else {
           fold_weights <- if (use_manuscript_weights) replication_weights(setting, i, m)
           fit <- fit_replication(n, m, h, i, settings, directions, fold_weights)
-          save_fit(fit, path)
+          temporary <- tempfile(tmpdir = folder)
+          saveRDS(fit, temporary)
+          if (!file.rename(temporary, path)) stop("Could not save ", path)
         }
         records[[length(records) + 1L]] <- fit[[component]]
       }
