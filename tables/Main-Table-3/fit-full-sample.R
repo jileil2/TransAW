@@ -1,6 +1,6 @@
 library(TransAW)
-source("tables/Main-Table-1/kinase-design.R")
-source("tables/Main-Table-1/kinase-trans-lasso.R")
+source("tables/Main-Table-2/kinase-design.R")
+source("tables/Main-Table-2/kinase-trans-lasso.R")
 source("methods/target-lasso.R")
 source("methods/riw-tl.R")
 

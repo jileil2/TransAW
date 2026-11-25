@@ -13,7 +13,7 @@ The estimator has four steps:
 3. **Sparse target adjustment.** A LASSO regression on the held-out target fold estimates the remaining source–target coefficient difference, allowing the target data to focus on this difference rather than estimating the full coefficient vector from scratch.
 4. **Final estimator.** The two target folds exchange roles, and the resulting coefficient estimates are averaged.
 
-The source weights are **nonnegative and sum to one**. They determine each source's contribution to the weighted regression; they should not be interpreted as probabilities that a source and target have identical regression coefficients.
+The source weights are **nonnegative and sum to one**. They weight the source regression losses.
 
 The package accompanies *Adaptive Weighting of Sources in Transfer Learning for High-Dimensional Linear Regression*.
 

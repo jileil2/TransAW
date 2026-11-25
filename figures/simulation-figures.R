@@ -6,13 +6,15 @@ mean_interval <- function(x) {
 }
 
 effective_sample_size <- function(weights) {
-  # Normalize each method's fitted source contributions within its replication.
+  # Normalize each method's fitted source weights within its replication.
   total <- with(weights, ave(mass, rep, m, h, method, FUN = sum))
   stopifnot(all(is.finite(total)), all(total > 0))
   weights$share <- weights$mass / total
   aggregate(share ~ rep + m + h + method + group, weights, function(w) {
-    if (sum(w) == 0) return(0)
-    sum(w)^3 / sum(w^2 / 100)
+    group_weight <- sum(w)
+    if (group_weight == 0) return(0)
+    # Normalize before squaring so negligible weights do not underflow.
+    group_weight / sum((w / group_weight)^2 / 100)
   })
 }
 

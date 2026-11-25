@@ -1,7 +1,10 @@
-# Table 2. Full-sample kinase analysis.
-source("tables/Main-Table-2/source-contributions.R")
-source("tables/Main-Table-2/fit-full-sample.R")
-weights <- fit_full_sample()$source_weights
+# Table 2. Mean test error across scaffold splits.
+source("tables/Main-Table-2/fit-kinases.R")
+source("tables/Main-Table-2/kinase-summaries.R")
+source("tables/kinase-tables.R")
+
+errors <- kinase_errors(kinase_fits("predictions"))
 folder <- file.path(Sys.getenv("TRANSAW_WORKDIR", "results"), "Main-Table-2")
 dir.create(folder, recursive = TRUE, showWarnings = FALSE)
-write_source_table(weights, file.path(folder, "Main-Table-2"))
+saveRDS(errors, file.path(folder, "Main-Table-2.rds"))
+write_error_table(errors, file.path(folder, "Main-Table-2"))

@@ -11,7 +11,7 @@ The analysis used the archived PKIS1 export distributed by Spencer Ericksen and 
 | `kinase-panel.csv.gz` | One row per ChEMBL parent compound. The columns give a scaffold identifier, percent inhibition for p38α and nine source kinases, and the 256 bits of a radius-two Morgan fingerprint. MK3 appears under its assay name, MAPKAPK3. |
 | `scaffold-splits.csv.gz` | Training and test compound identifiers for each of the 100 partitions. Training row order determines the inner folds. Each split holds out 109 compounds and uses the full historical source screens. |
 | `kinase-test-predictions.rds` | Compound-level predictions on the 100 test splits, including missing RIW-TL predictions on its 12 unsuccessful splits. Used to compute RMSE. |
-| `full-sample-fit.rds` | Full-sample regression coefficients, intercepts, and source contributions. |
+| `full-sample-fit.rds` | Full-sample regression coefficients, intercepts, and source weights. |
 | `compound-structures.csv` | Parent compound SMILES for the 364 compounds. |
 | `selected-environments.csv` | The three illustrated fingerprint environments, example compounds, highlighted atom/bond indices, and coverage counts. |
 

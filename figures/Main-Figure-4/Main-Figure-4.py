@@ -1,4 +1,4 @@
-"""Draw the three molecular environments in Figure 5."""
+"""Draw the three molecular environments in Figure 4."""
 import csv
 import gzip
 import json
@@ -11,7 +11,7 @@ from rdkit import Chem
 from rdkit.Chem import rdFingerprintGenerator
 from rdkit.Chem.Draw import rdMolDraw2D
 
-folder = Path(os.environ.get("TRANSAW_WORKDIR", "results")) / "Main-Figure-5"
+folder = Path(os.environ.get("TRANSAW_WORKDIR", "results")) / "Main-Figure-4"
 folder.mkdir(parents=True, exist_ok=True)
 with open("data/selected-environments.csv") as stream:
     examples = list(csv.DictReader(stream))
@@ -82,7 +82,7 @@ for example, color in zip(examples, colors):
     )
     uncropped.unlink()
 
-template = Path("figures/Main-Figure-5/Main-Figure-5.tex")
+template = Path("figures/Main-Figure-4/Main-Figure-4.tex")
 (folder / template.name).write_text(template.read_text())
 subprocess.run(
     ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", template.name],

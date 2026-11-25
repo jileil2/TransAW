@@ -1,19 +1,12 @@
-# Figure 2. Effective sample size by source compatibility
+# Figure 2. Test error on held-out compounds
 
-This figure uses the 2,400 simulation datasets with 100 observations per source. Rows represent compatible, mildly compatible, and non-compatible sources; columns represent heterogeneity levels 2, 4, and 6. Points are means over 200 replications per setting, with 95% Monte Carlo intervals for the means.
+Each row contains root mean squared error on the 109 held-out compounds in one scaffold split. The plot compares four methods across 100 splits. RIW-TL returned predictions on 88 of them.
 
-Within each replication, the script normalizes each method's source contributions and computes category effective sample size using the definition in Section 4.
-
-Run from the repository root to reproduce the figure from saved results:
+Run either command from the repository root. The first reads the manuscript data in `Main-Figure-2.rds`. The second fits the models with the TransAW package.
 
 ```sh
 Rscript figures/Main-Figure-2/Main-Figure-2-from-rds.R
-```
-
-To refit the models and draw the figure:
-
-```sh
 Rscript figures/Main-Figure-2/Main-Figure-2.R
 ```
 
-The second command resumes completed simulation fits shared with Figure 1. See the [simulation instructions](../Main-Figure-1/README.md#simulations) for dependencies and smaller runs. Outputs are written to `results/Main-Figure-2/`; set `TRANSAW_WORKDIR` to change this location. The [panels directory](panels/) retains the earlier standalone display and scripts.
+The PDF and its TikZ source and saved R data are included here. The scripts write new files to `results/Main-Figure-2/` by default. See the [setup instructions](../../README.md#rerunning-the-analyses) before running a full analysis.

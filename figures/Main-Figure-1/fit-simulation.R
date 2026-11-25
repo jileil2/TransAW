@@ -36,8 +36,8 @@ replication_weights <- function(weights, i, m) {
          dimnames = list(directions, paste("Source", seq_len(m))))
 }
 
-# Figures 1 and 3 use the same simulated datasets. Keep each completed fit so
-# that both figures can use it and an interrupted run can resume.
+# Figure 1 and Table 1 share the simulations with 100 observations per source.
+# Save each completed fit for reuse and resume interrupted runs.
 simulation_fits <- function(n, component, sources = c(5, 10, 15, 20),
                             heterogeneity = c(2, 4, 6), replications = 1:200,
                             use_manuscript_weights = FALSE) {

@@ -1,8 +1,64 @@
-\begin{tabular}{lr}
-Method & Mean RMSE \\
-Target-only LASSO & 17.20 (0.20) \\
-Trans-LASSO & 15.30 (0.16) \\
-RIW-TL & 22.18 (0.48) \\
-Trans-AW & 12.09 (0.17) \\
-Trans-AW, equal source weights & 16.70 (0.19) \\
-\end{tabular}
+\begin{table}[!htbp]
+\resultstableformat
+\renewcommand{\tablefont}{\fontsize{8.5}{9.5}\selectfont}
+\renewcommand{\arraystretch}{1.0}
+\setlength{\tabcolsep}{3pt}
+\tbl{Mean category effective sample size at \(n_k=100\) across source counts \(m\) and heterogeneity levels \(h\).}{%
+\begin{minipage}{.92\linewidth}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rrlrrr@{}}
+\noalign{\hrule height .6pt\vskip 3pt}
+$m$ & $h$ & Method & Compatible & Mildly compatible & Non-compatible \\
+\noalign{\vskip 3pt\hrule height .3pt\vskip 3pt}
+\multirow{9}{*}[-1.5pt]{5} & \multirow{3}{*}{2} & Trans-AW & 88.4 (1.2) & 72.9 (1.2) & 14.5 (0.4) \\
+ &  & Trans-LASSO & 73.6 (4.1) & 47.5 (3.6) & 3.6 (0.8) \\
+ &  & RIW-TL & 81.3 (0.3) & 80.9 (0.3) & 18.6 (0.1) \\
+\noalign{\vskip 1.5pt}
+ & \multirow{3}{*}{4} & Trans-AW & 100.9 (1.3) & 74.0 (1.2) & 7.6 (0.3) \\
+ &  & Trans-LASSO & 92.7 (3.9) & 30.9 (2.7) & 0.0 (0.0) \\
+ &  & RIW-TL & 86.1 (0.3) & 81.1 (0.3) & 16.0 (0.1) \\
+\noalign{\vskip 1.5pt}
+ & \multirow{3}{*}{6} & Trans-AW & 112.9 (1.2) & 66.0 (1.2) & 4.8 (0.2) \\
+ &  & Trans-LASSO & 123.2 (3.7) & 11.5 (1.7) & 0.0 (0.0) \\
+ &  & RIW-TL & 92.4 (0.3) & 79.8 (0.3) & 13.3 (0.1) \\
+\noalign{\vskip 3pt\hrule height .3pt\vskip 3pt}
+\multirow{9}{*}[-1.5pt]{10} & \multirow{3}{*}{2} & Trans-AW & 167.9 (1.6) & 147.3 (1.6) & 29.8 (0.5) \\
+ &  & Trans-LASSO & 114.0 (3.5) & 97.7 (3.6) & 16.9 (1.0) \\
+ &  & RIW-TL & 163.2 (0.4) & 160.4 (0.3) & 37.1 (0.1) \\
+\noalign{\vskip 1.5pt}
+ & \multirow{3}{*}{4} & Trans-AW & 188.2 (1.9) & 140.3 (1.7) & 21.0 (0.5) \\
+ &  & Trans-LASSO & 132.4 (3.8) & 65.8 (3.8) & 5.8 (0.6) \\
+ &  & RIW-TL & 172.1 (0.4) & 161.8 (0.4) & 31.5 (0.2) \\
+\noalign{\vskip 1.5pt}
+ & \multirow{3}{*}{6} & Trans-AW & 205.9 (1.8) & 135.6 (1.7) & 14.4 (0.4) \\
+ &  & Trans-LASSO & 159.5 (3.8) & 24.8 (2.9) & 0.9 (0.2) \\
+ &  & RIW-TL & 183.6 (0.5) & 159.6 (0.4) & 26.2 (0.2) \\
+\noalign{\vskip 3pt\hrule height .3pt\vskip 3pt}
+\multirow{9}{*}[-1.5pt]{15} & \multirow{3}{*}{2} & Trans-AW & 246.1 (2.0) & 215.1 (1.8) & 47.0 (0.7) \\
+ &  & Trans-LASSO & 214.9 (4.3) & 199.6 (4.2) & 30.4 (1.2) \\
+ &  & RIW-TL & 243.8 (0.6) & 240.3 (0.5) & 55.7 (0.2) \\
+\noalign{\vskip 1.5pt}
+ & \multirow{3}{*}{4} & Trans-AW & 272.7 (2.2) & 212.8 (2.1) & 34.6 (0.8) \\
+ &  & Trans-LASSO & 234.6 (5.2) & 178.6 (5.6) & 9.9 (0.8) \\
+ &  & RIW-TL & 259.6 (0.5) & 241.0 (0.5) & 47.1 (0.2) \\
+\noalign{\vskip 1.5pt}
+ & \multirow{3}{*}{6} & Trans-AW & 301.1 (2.1) & 199.8 (2.1) & 25.5 (0.7) \\
+ &  & Trans-LASSO & 228.7 (5.3) & 127.4 (5.9) & 3.6 (0.5) \\
+ &  & RIW-TL & 276.4 (0.5) & 237.7 (0.5) & 39.8 (0.2) \\
+\noalign{\vskip 3pt\hrule height .3pt\vskip 3pt}
+\multirow{9}{*}[-1.5pt]{20} & \multirow{3}{*}{2} & Trans-AW & 329.0 (2.5) & 283.9 (2.2) & 61.7 (0.8) \\
+ &  & Trans-LASSO & 282.0 (6.0) & 255.1 (6.1) & 34.5 (1.5) \\
+ &  & RIW-TL & 324.3 (0.5) & 321.5 (0.5) & 74.4 (0.2) \\
+\noalign{\vskip 1.5pt}
+ & \multirow{3}{*}{4} & Trans-AW & 351.5 (2.5) & 283.8 (2.2) & 49.5 (0.9) \\
+ &  & Trans-LASSO & 327.4 (6.9) & 258.5 (6.8) & 14.3 (1.2) \\
+ &  & RIW-TL & 344.4 (0.6) & 322.5 (0.6) & 63.1 (0.3) \\
+\noalign{\vskip 1.5pt}
+ & \multirow{3}{*}{6} & Trans-AW & 384.4 (2.7) & 269.5 (2.5) & 38.9 (0.8) \\
+ &  & Trans-LASSO & 345.3 (8.8) & 192.7 (7.3) & 5.4 (0.7) \\
+ &  & RIW-TL & 364.6 (0.6) & 320.6 (0.6) & 53.2 (0.3) \\
+\noalign{\vskip 3pt\hrule height .6pt}
+\end{tabular*}
+\resultstablenote{Parentheses give Monte Carlo standard errors based on 200 replications. Category effective sample size is calculated within each replication from the normalized source weights.}
+\end{minipage}}
+\label{tab:highdim-category-neff}
+\end{table}

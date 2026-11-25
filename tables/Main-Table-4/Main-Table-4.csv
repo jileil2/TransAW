@@ -1,0 +1,4 @@
+"bit","environment","trans_aw","target_only","coverage"
+"bit204","Substituted imidazole junction (bit 204)",21.8641770526829,16.1890610342706,"26/34 (76.5%)"
+"bit19","Pyridine-ring segment (bit 19)",1.05330394547694,0,"84/118 (71.2%)"
+"bit64","Aromatic carbon environment (bit 64)",0,-0.377386476617032,"229/235 (97.4%)"

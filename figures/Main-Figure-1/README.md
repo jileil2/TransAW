@@ -15,7 +15,7 @@ The [panels directory](panels/) retains the original individual figures, saved r
 
 ## Simulations
 
-The simulations use 150 target observations, 500 predictors, and 100 or 300 observations per source. Each combination of source count and heterogeneity has 200 replications. The base seed is 20260716. Figure 1 uses all 4,800 datasets. Figure 2 uses the 2,400 datasets with 100 observations per source.
+The simulations use 150 target observations, 500 predictors, and 100 or 300 observations per source. Each combination of source count and heterogeneity has 200 replications. The base seed is 20260716. Figure 1 uses all 4,800 datasets. Table 1 uses the 2,400 datasets with 100 observations per source.
 
 For example, this command simulates the data, fits the four methods and draws Figure 1.
 

@@ -30,7 +30,7 @@ riw_fit <- function(dat, seed) {
   list(beta = as.numeric(fit$beta_RIW_TL), mass = replay$mass)
 }
 
-# Recover source contributions from the three rotations of the published RIW estimator.
+# Recover source weights from the three rotations of the published RIW estimator.
 reference_target_split <- function(X0, y0, j) {
   n0 <- nrow(X0)
   n_third <- floor(n0 / 3)

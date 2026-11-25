@@ -1,9 +1,8 @@
-# Table 1. Mean test error across scaffold splits.
-source("tables/Main-Table-1/kinase-summaries.R")
-source("tables/kinase-tables.R")
+# Table 1. Category effective sample size, grouped by source count.
+source("figures/simulation-figures.R")
+source("tables/Main-Table-1/borrowing-table.R")
 
-predictions <- readRDS("data/kinase-test-predictions.rds")
-errors <- kinase_errors(predictions)
+weights <- readRDS("tables/Main-Table-1/Main-Table-1.rds")
 folder <- file.path(Sys.getenv("TRANSAW_WORKDIR", "results"), "Main-Table-1")
 dir.create(folder, recursive = TRUE, showWarnings = FALSE)
-write_error_table(errors, file.path(folder, "Main-Table-1"))
+write_borrowing_table(weights, file.path(folder, "Main-Table-1"))
